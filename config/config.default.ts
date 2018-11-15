@@ -35,7 +35,7 @@ export default (appInfo: EggAppInfo) => {
       timezone: '+08:00',
       pool: {
         max: 10,
-        min: 5,
+        min: 1,
         idle: 10000,
       },
       retry: { max: 3 },
@@ -52,6 +52,14 @@ export default (appInfo: EggAppInfo) => {
     allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH,OPTIONS',
     // credentials: true,
   };
+
+  config.cluster = {
+    listen: {
+      port: 7003,
+      hostname: '127.0.0.1',
+      // path: '/var/run/egg.sock',
+    }
+  }
 
   // the return config will combines to EggAppConfig
   return {

@@ -59,7 +59,12 @@ export default (appInfo: EggAppInfo) => {
       hostname: '127.0.0.1',
       // path: '/var/run/egg.sock',
     }
-  }
+  };
+
+  config.logger = {
+    // 相对config文件夹的上一级目录
+    dir: '../egglogs',
+  };
 
   // the return config will combines to EggAppConfig
   return {

@@ -9,13 +9,13 @@ export default (app) => {
         id: {
             type: INTEGER,
             autoIncrement: true,
-            primaryKey: true
+            primaryKey: true,
         },
         code: STRING,
-        name: STRING
+        name: STRING,
     }, {
-            tableName: "province",
-            timestamps: false
+            tableName: 'province',
+            timestamps: false,
         });
     return Province;
-}
+};

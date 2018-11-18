@@ -7,10 +7,10 @@ export default class AreaController extends BaseController {
     /**
      * 获取省份列表
      * 接口: /area/province-list
-     * 参数: 
-     *      
-     * 返回数据: 
-     *      
+     * 参数:
+     *
+     * 返回数据:
+     *
      */
     public async get_provinceList() {
         const { ctx } = this;
@@ -20,14 +20,14 @@ export default class AreaController extends BaseController {
     /**
      * 获取城市列表
      * 接口: /area/city-list
-     * 参数: 
+     * 参数:
      *      provincecode: 省份编号
-     * 返回数据: 
-     *      
+     * 返回数据:
+     *
      */
     public async get_cityList() {
         const { ctx } = this;
-        let { provincecode } = ctx.query;
+        const { provincecode } = ctx.query;
         ctx.body = await ctx.service.area.getCityList({ provincecode });
     }
 }

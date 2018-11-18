@@ -1,4 +1,5 @@
 import { EggAppConfig, EggAppInfo, PowerPartial } from 'egg';
+// let path = require('path');
 
 export default (appInfo: EggAppInfo) => {
   const config = {} as PowerPartial<EggAppConfig>;
@@ -43,7 +44,7 @@ export default (appInfo: EggAppInfo) => {
       //   connectionTimeout: 0,
       //   requestTimeout: 0,
       // },
-  }
+  };
 
   // config for cors
   config.cors = {
@@ -52,19 +53,38 @@ export default (appInfo: EggAppInfo) => {
     allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH,OPTIONS',
     // credentials: true,
   };
-
+  /**
+   * 配置服务器启动项
+   */
   config.cluster = {
     listen: {
       port: 7003,
       hostname: '127.0.0.1',
       // path: '/var/run/egg.sock',
-    }
+    },
   };
-
+  /**
+   * 配置日志位置
+   */
   config.logger = {
     // 相对config文件夹的上一级目录
     dir: '../egglogs',
   };
+  /**
+   * 配置 视图引擎
+   */
+  config.view = {
+    // root: path.join(appInfo.baseDir, 'app/assets'),
+    defaultViewEngine: 'nunjucks',
+    mapping: {
+        '.tpl': 'nunjucks',
+    },
+  };
+
+  // config.assets = {
+  //   templatePath: path.join(appInfo.baseDir, 'app/view/template.html'),
+  //   templateViewEngine: 'nunjucks',
+  // };
 
   // the return config will combines to EggAppConfig
   return {

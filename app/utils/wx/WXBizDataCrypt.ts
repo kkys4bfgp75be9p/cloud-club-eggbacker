@@ -12,16 +12,18 @@ class WXBizDataCrypt {
 
   decryptData(encryptedData, iv) {
     // base64 decode
-    var sessionKey = new Buffer(this.sessionKey, 'base64');
+    const sessionKey = new Buffer(this.sessionKey, 'base64');
     encryptedData = new Buffer(encryptedData, 'base64');
     iv = new Buffer(iv, 'base64');
 
+    let decoded: any;
+
     try {
       // 解密
-      var decipher = crypto.createDecipheriv('aes-128-cbc', sessionKey, iv);
+      const decipher = crypto.createDecipheriv('aes-128-cbc', sessionKey, iv);
       // 设置自动 padding 为 true，删除填充补位
       decipher.setAutoPadding(true);
-      var decoded = decipher.update(encryptedData, 'binary', 'utf8');
+      decoded = decipher.update(encryptedData, 'binary', 'utf8');
       decoded += decipher.final('utf8');
 
       decoded = JSON.parse(decoded);
@@ -38,7 +40,5 @@ class WXBizDataCrypt {
   }
 
 }
-
-
 
 export default WXBizDataCrypt;

@@ -52,10 +52,10 @@ export default {
     // 存储过程执行错误代码
     PROC_EXCEPTION: new ProjectError(2000, 'proc push you a exception!'),
     // 社团升降权相关
-    PROC_POWER_CHANGE_DIFF_INVALID: new ProjectError(2011, 'diff mast be 1 or -1!'),// 差值不符
-    PROC_POWER_CHANGE_GT_2: new ProjectError(2012, 'You must have 2 levels of authority over the target!'),// 权限提升时,权限差值不符
-    PROC_POWER_CHANGE_LT_1: new ProjectError(2013, 'Your permissions must be 1 level below the targets permissions!'),// 权限降级时,权限差值不符 
-    PROC_POWER_CHANGE_UPDATE_FAIL: new ProjectError(2014, 'update fail!'),// 修改未成功
+    PROC_POWER_CHANGE_DIFF_INVALID: new ProjectError(2011, 'diff mast be 1 or -1!'), // 差值不符
+    PROC_POWER_CHANGE_GT_2: new ProjectError(2012, 'You must have 2 levels of authority over the target!'), // 权限提升时,权限差值不符
+    PROC_POWER_CHANGE_LT_1: new ProjectError(2013, 'Your permissions must be 1 level below the targets permissions!'), // 权限降级时,权限差值不符
+    PROC_POWER_CHANGE_UPDATE_FAIL: new ProjectError(2014, 'update fail!'), // 修改未成功
 
     // 点赞相关
     PROC_TORCH_HEATING_NOANYTHING: new ProjectError(3001, '米有任何的火把了你!'),
@@ -64,5 +64,5 @@ export default {
 
     // 审核相关
     PROC_VALIDATE_STATUS_EXCEPTION: new ProjectError(4001, '该审核条目的状态异常!'),
-    PROC_VALIDATE_NO_ROWCOUNT: new ProjectError(4002, '审核时更新状态未变化!')
-}
+    PROC_VALIDATE_NO_ROWCOUNT: new ProjectError(4002, '审核时更新状态未变化!'),
+};

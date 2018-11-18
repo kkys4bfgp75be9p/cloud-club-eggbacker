@@ -1,7 +1,7 @@
 /**
  * 社团活动: 投票记录表
  */
-let moment = require('moment');
+const moment = require('moment');
 
 export default (app) => {
   const { CHAR, DATE, NOW } = app.Sequelize;
@@ -10,26 +10,26 @@ export default (app) => {
     id: {
       type: CHAR(36),
       allowNull: false,
-      primaryKey: true
+      primaryKey: true,
     },
     activity_id: {
       type: CHAR(36),
-      allowNull: false
+      allowNull: false,
     },
     client_id: {
       type: CHAR(36),
-      allowNull: false
+      allowNull: false,
     },
-    createdAt: { 
+    createdAt: {
       type: DATE,
       get createdAt() {
           return moment(ClubActivityVoteRecord.getDataValue('createdAt')).format('YYYY-MM-DD HH:mm:ss');
       },
-      defaultValue: NOW
-    }
+      defaultValue: NOW,
+    },
   }, {
     tableName: 'club_activity_vote_record',
-    timestamps: false
+    timestamps: false,
   });
   return ClubActivityVoteRecord;
-}
+};

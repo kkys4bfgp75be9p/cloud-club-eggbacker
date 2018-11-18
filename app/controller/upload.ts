@@ -1,9 +1,9 @@
 /**
  * 社团活动相关控制器
  */
-import BaseController from './common/base';
-import { getSignature } from '../utils/upload/alioss';
 import Message, { ErrorType } from '../utils/message';
+import { getSignature } from '../utils/upload/alioss';
+import BaseController from './common/base';
 
 export default class UploadController extends BaseController {
     /**
@@ -23,7 +23,7 @@ export default class UploadController extends BaseController {
     }
 
     /**
-     * 上传 app 统一unionid指向的头像到 union/headpic/ 
+     * 上传 app 统一unionid指向的头像到 union/headpic/
      * get("/upload/sheu/headpic")
      */
     public async get_sheu_headpic() {
@@ -32,7 +32,7 @@ export default class UploadController extends BaseController {
     }
 
     /**
-     * 上传 云社团 openid指向的头像到 cloudclub/headpic/ 
+     * 上传 云社团 openid指向的头像到 cloudclub/headpic/
      * get("/upload/cloudclub/headpic")
      */
     public async get_cloudclub_headpic() {
@@ -41,7 +41,7 @@ export default class UploadController extends BaseController {
     }
 
     /**
-     * 上传 外卖用户端 openid指向的头像到 wm/client/headpic/ 
+     * 上传 外卖用户端 openid指向的头像到 wm/client/headpic/
      * get("/upload/wm/client/headpic")
      */
     public async get_wm_client_headpic() {
@@ -117,8 +117,8 @@ export default class UploadController extends BaseController {
      * get("/upload/cloudclub/activity")
      */
     public async get_cloudclub_activity() {
-        let date = new Date();
-        let year = date.getFullYear();
+        const date = new Date();
+        const year = date.getFullYear();
         let month = String(date.getMonth() + 1);
         month = ('' + month)[1] ? month : '0' + month;
         const dir = 'cloudclub/activity/' + (year + '' + month) + '/';

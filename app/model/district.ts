@@ -9,14 +9,14 @@ export default (app) => {
         id: {
             type: INTEGER,
             autoIncrement: true,
-            primaryKey: true
+            primaryKey: true,
         },
         code: STRING,
         name: STRING,
-        citycode: STRING
+        citycode: STRING,
     }, {
-            tableName: "district",
-            timestamps: false
+            tableName: 'district',
+            timestamps: false,
         });
     return District;
-}
+};

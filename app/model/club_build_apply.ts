@@ -1,7 +1,7 @@
 /**
  * 社团: 社团建立申请表
  */
-let moment = require('moment');
+const moment = require('moment');
 
 export default (app) => {
   const { CHAR, STRING, INTEGER, DATE, NOW } = app.Sequelize;
@@ -10,60 +10,60 @@ export default (app) => {
     id: {
       type: CHAR(36),
       allowNull: false,
-      primaryKey: true
+      primaryKey: true,
     },
     create_client_id: {
       type: CHAR(36),
-      allowNull: false
+      allowNull: false,
     },
     school_id: {
       type: INTEGER(11),
-      allowNull: false
+      allowNull: false,
     },
     title: {
         type: STRING(16),
-        allowNull: false
+        allowNull: false,
     },
     club_check_url: {
       type: STRING(200),
-      allowNull: true
+      allowNull: true,
     },
     struts: {
       type: INTEGER(11),
-      allowNull: true
+      allowNull: true,
     },
     checked_fail_reason: {
       type: STRING(64),
-      allowNull: true
+      allowNull: true,
     },
     checked_user: {
         type: CHAR(36),
-        allowNull: true
+        allowNull: true,
     },
     checkedAt: {
       type: DATE,
       get checkedAt() {
           return moment(ClubBuildApply.getDataValue('checkedAt')).format('YYYY-MM-DD HH:mm:ss');
-      }
+      },
     },
     createdAt: {
         type: DATE,
         get createdAt() {
             return moment(ClubBuildApply.getDataValue('createdAt')).format('YYYY-MM-DD HH:mm:ss');
         },
-        defaultValue: NOW
+        defaultValue: NOW,
     },
     formId: {
       type: STRING(128),
-      allowNull: true
+      allowNull: true,
     },
     referrer: {
       type: STRING(36),
-      allowNull: true
-    }
+      allowNull: true,
+    },
   }, {
     tableName: 'club_build_apply',
-    timestamps: false
+    timestamps: false,
   });
   return ClubBuildApply;
-}
+};

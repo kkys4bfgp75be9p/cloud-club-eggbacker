@@ -1,7 +1,7 @@
 /**
  * sys用户角色表
  */
-let moment = require('moment');
+const moment = require('moment');
 
 export default (app) => {
   const { CHAR, STRING, INTEGER, DATE, NOW } = app.Sequelize;
@@ -10,19 +10,19 @@ export default (app) => {
     id: {
       type: CHAR(36),
       allowNull: false,
-      primaryKey: true
+      primaryKey: true,
     },
     openid: {
       type: CHAR(128),
-      allowNull: false
+      allowNull: false,
     },
     username: {
       type: STRING(16),
-      allowNull: false
+      allowNull: false,
     },
     the_power: {
       type: INTEGER(11),
-      allowNull: true
+      allowNull: true,
     },
     createdAt: {
       type: DATE,
@@ -30,11 +30,11 @@ export default (app) => {
         // app.logger.info('【Moment CreatedAt】: ',this['createdAt']);
         return moment(CheckerRole.getDataValue('createdAt')).format('YYYY-MM-DD HH:mm:ss');
       },
-      defaultValue: NOW
-    }
+      defaultValue: NOW,
+    },
   }, {
       tableName: 'checker_role',
-      timestamps: false
+      timestamps: false,
     });
   return CheckerRole;
-}
+};

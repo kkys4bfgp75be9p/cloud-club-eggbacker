@@ -1,7 +1,7 @@
 /**
  * 用户角色表
  */
-let moment = require('moment');
+const moment = require('moment');
 
 export default (app) => {
   const { CHAR, STRING, INTEGER, DATE, NOW } = app.Sequelize;
@@ -10,54 +10,54 @@ export default (app) => {
     id: {
       type: CHAR(36),
       allowNull: false,
-      primaryKey: true
+      primaryKey: true,
     },
     client_id: {
       type: CHAR(36),
-      allowNull: false
+      allowNull: false,
     },
     school_id: {
       type: INTEGER(11),
-      allowNull: false
+      allowNull: false,
     },
     profe: {
       type: STRING(32),
-      allowNull: true
+      allowNull: true,
     },
     educ_job: {
       type: STRING(16),
-      allowNull: true
+      allowNull: true,
     },
     realname: {
       type: STRING(16),
-      allowNull: true
+      allowNull: true,
     },
     cert_url: {
       type: STRING(200),
-      allowNull: true
+      allowNull: true,
     },
     struts: {
       type: INTEGER(11),
-      allowNull: true
+      allowNull: true,
     },
     checked_fail_reason: {
       type: STRING(64),
-      allowNull: true
+      allowNull: true,
     },
     formId: {
       type: STRING(128),
-      allowNull: true
+      allowNull: true,
     },
-    createdAt: { 
+    createdAt: {
       type: DATE,
       get createdAt() {
           return moment(ClientRole.getDataValue('createdAt')).format('YYYY-MM-DD HH:mm:ss');
       },
-      defaultValue: NOW
-    }
+      defaultValue: NOW,
+    },
   }, {
     tableName: 'client_role',
-    timestamps: false
+    timestamps: false,
   });
   return ClientRole;
-}
+};

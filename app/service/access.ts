@@ -2,10 +2,10 @@
  * Access 登录相关的业务逻辑层
  */
 const uuidv1 = require('uuid/v1');
-import BaseService from './common/base';
-import Token from '../utils/token';
-import Message, { ErrorType } from '../utils/message';
 import * as ProConf from '../utils/configs/project-config';
+import Message, { ErrorType } from '../utils/message';
+import Token from '../utils/token';
+import BaseService from './common/base';
 
 // console.log('uuidv1 ======> ', uuidv1);
 
@@ -20,24 +20,24 @@ export default class AccessService extends BaseService {
      */
     public async saveLogin4SystemRole(openid: string) {
         // return `openid: ${openid}`;
-        let where = { openid };
+        const where = { openid };
         // 写入数据的条件
-        let newClient = {
+        const newClient = {
             id: uuidv1(),
             username: '未知',
-            the_power: 0
+            the_power: 0,
         };
 
         try {
-            let originData = await this.ctx.model.CheckerRole.findOrCreate({ where, defaults: newClient, raw: true });
+            const originData = await this.ctx.model.CheckerRole.findOrCreate({ where, defaults: newClient, raw: true });
             this.logger.debug('【saveLogin4SystemRole => originData】: ', originData);
-            let result = originData[0];
+            const result = originData[0];
             this.logger.debug('系统审核登录交换后的 result:: ', result);
             // 创建并生成token,然后返回
-            let token = new Token();
+            const token = new Token();
             return new Message(null, {
                 token: token.createToken({ id: result.id }),
-                username: result.username
+                username: result.username,
             });
         } catch (e) {
             this.logger.error(e);
@@ -51,12 +51,12 @@ export default class AccessService extends BaseService {
      */
     public async saveLogin4CloudClub({ appid, unionid, xcx_openid }) {
         // 之后替换成 unionid
-        let where = {};
+        const where = {};
         // 写入数据的条件
-        let newClient = {
-            id: uuidv1()
+        const newClient = {
+            id: uuidv1(),
         };
-        // 
+        //
         if (unionid) {
             where['unionid'] = unionid;
             newClient['unionid'] = unionid;
@@ -77,17 +77,17 @@ export default class AccessService extends BaseService {
         }
 
         try {
-            let originData = await this.ctx.model.Client.findOrCreate({ where, defaults: newClient, raw: true });
-            let result = originData[0];
+            const originData = await this.ctx.model.Client.findOrCreate({ where, defaults: newClient, raw: true });
+            const result = originData[0];
             this.logger.debug('登录交换后的 result:: ', result);
             // 创建并生成token,然后返回
-            let token = new Token();
+            const token = new Token();
             return new Message(null, {
                 token: token.createToken({ id: result.id }),
                 nickname: result.nickname,
                 telephone: result.telephone,
                 avatar_url: result.avatar_url,
-                gender: result.gender
+                gender: result.gender,
             });
         } catch (e) {
             this.logger.error(e);

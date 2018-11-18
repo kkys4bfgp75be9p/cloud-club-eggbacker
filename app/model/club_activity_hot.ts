@@ -1,7 +1,7 @@
 /**
  * 社团活动: 活动热度表
  */
-let moment = require('moment');
+const moment = require('moment');
 
 export default (app) => {
   const { CHAR, INTEGER, DATE, NOW } = app.Sequelize;
@@ -10,33 +10,33 @@ export default (app) => {
     id: {
       type: CHAR(36),
       allowNull: false,
-      primaryKey: true
+      primaryKey: true,
     },
     activity_id: {
       type: CHAR(36),
-      allowNull: false
+      allowNull: false,
     },
     heat: {
       type: INTEGER(11),
-      allowNull: true
+      allowNull: true,
     },
     updatedAt: {
       type: DATE,
       get updatedAt() {
           return moment(ClubActivityHot.getDataValue('updatedAt')).format('YYYY-MM-DD HH:mm:ss');
       },
-      defaultValue: NOW
+      defaultValue: NOW,
     },
     createdAt: {
       type: DATE,
       get createdAt() {
           return moment(ClubActivityHot.getDataValue('createdAt')).format('YYYY-MM-DD HH:mm:ss');
       },
-      defaultValue: NOW
-    }
+      defaultValue: NOW,
+    },
   }, {
     tableName: 'club_activity_hot',
-    timestamps: false
+    timestamps: false,
   });
   return ClubActivityHot;
-}
+};

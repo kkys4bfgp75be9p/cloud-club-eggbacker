@@ -1,7 +1,7 @@
 /**
  * 社团活动: 赛季获奖名单表
  */
-let moment = require('moment');
+const moment = require('moment');
 
 export default (app) => {
   const { CHAR, STRING, INTEGER, DATE, NOW } = app.Sequelize;
@@ -10,66 +10,66 @@ export default (app) => {
     id: {
       type: CHAR(36),
       allowNull: false,
-      primaryKey: true
+      primaryKey: true,
     },
     creator_id: {
       type: CHAR(36),
-      allowNull: false
+      allowNull: false,
     },
     season_id: {
       type: CHAR(36),
-      allowNull: false
+      allowNull: false,
     },
     club_no1_id: {
       type: CHAR(36),
-      allowNull: true
+      allowNull: true,
     },
     club_no2_id: {
       type: CHAR(36),
-      allowNull: true
+      allowNull: true,
     },
     club_no3_id: {
       type: CHAR(36),
-      allowNull: true
+      allowNull: true,
     },
     role_no1_id: {
       type: CHAR(36),
-      allowNull: true
+      allowNull: true,
     },
     role_no2_id: {
       type: CHAR(36),
-      allowNull: true
+      allowNull: true,
     },
     role_no3_id: {
       type: CHAR(36),
-      allowNull: true
+      allowNull: true,
     },
     remark: {
       type: STRING(200),
-      allowNull: true
+      allowNull: true,
     },
     struts: {
       type: INTEGER(11),
       allowNull: true,
-      defaultValue: '0'
+      defaultValue: '0',
     },
-    updatedAt: { 
+    updatedAt: {
       type: DATE,
       get updatedAt() {
           return moment(ClubActivitySeasonWiner.getDataValue('updatedAt')).format('YYYY-MM-DD HH:mm:ss');
       },
-      defaultValue: NOW
+      defaultValue: NOW,
     },
-    createdAt: { 
+    createdAt: {
       type: DATE,
       get createdAt() {
           return moment(ClubActivitySeasonWiner.getDataValue('createdAt')).format('YYYY-MM-DD HH:mm:ss');
       },
-      defaultValue: NOW
-    }
+      defaultValue: NOW,
+    },
   }, {
     tableName: 'club_activity_season_winer',
-    timestamps: false
+    timestamps: false,
   });
   return ClubActivitySeasonWiner;
-}
+};

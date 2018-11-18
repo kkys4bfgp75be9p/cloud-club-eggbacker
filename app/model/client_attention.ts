@@ -1,7 +1,7 @@
 /**
  * 用户关注关系
  */
-let moment = require('moment');
+const moment = require('moment');
 
 export default (app) => {
   const { CHAR, DATE, NOW } = app.Sequelize;
@@ -10,26 +10,26 @@ export default (app) => {
     id: {
       type: CHAR(36),
       allowNull: false,
-      primaryKey: true
+      primaryKey: true,
     },
     client_id: {
       type: CHAR(36),
-      allowNull: false
+      allowNull: false,
     },
     club_id: {
       type: CHAR(36),
-      allowNull: false
+      allowNull: false,
     },
     createdAt: {
       type: DATE,
       get createdAt() {
         return moment(ClientAttention.getDataValue('createdAt')).format('YYYY-MM-DD HH:mm:ss');
       },
-      defaultValue: NOW
-    }
+      defaultValue: NOW,
+    },
   }, {
       tableName: 'client_attention',
-      timestamps: false
+      timestamps: false,
     });
   return ClientAttention;
-}
+};

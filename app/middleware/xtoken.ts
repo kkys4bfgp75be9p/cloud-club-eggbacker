@@ -1,10 +1,10 @@
 /**
  * 用于处理axtoken的中间件
  */
-import Token from '../utils/token';
 import Message, { ErrorType } from '../utils/message';
+import Token from '../utils/token';
 
-const excludePath = ['/access/login'];
+const excludePath = ['/access/login', '/index'];
 
 export default () => {
     return async (ctx, next) => {
@@ -29,10 +29,10 @@ export default () => {
                 // 验证有误则发生异常
                 checkToken.checkToken( xtoken );
                 await next();
-            }catch(e){
+            }catch (e){
                 ctx.logger.debug('token 状态: ', e);
                 ctx.body = new Message(e);
             }
         }
-    }
-}
+    };
+};

@@ -6,5 +6,5 @@ export default () => {
         console.log('There is csrf auth...');
         ctx.state.csrf = ctx.csrf;
         await next();
-    }
-}
+    };
+};

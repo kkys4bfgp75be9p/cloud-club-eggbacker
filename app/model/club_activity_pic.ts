@@ -1,7 +1,7 @@
 /**
  * 社团活动: 活动配图表
  */
-let moment = require('moment');
+const moment = require('moment');
 
 export default (app) => {
   const { CHAR, STRING, DATE, NOW } = app.Sequelize;
@@ -10,26 +10,26 @@ export default (app) => {
     id: {
       type: CHAR(36),
       allowNull: false,
-      primaryKey: true
+      primaryKey: true,
     },
     activity_id: {
       type: CHAR(36),
-      allowNull: false
+      allowNull: false,
     },
     pic_url: {
       type: STRING(32),
-      allowNull: true
+      allowNull: true,
     },
-    createdAt: { 
+    createdAt: {
       type: DATE,
       get createdAt() {
           return moment(ClubActivityPic.getDataValue('createdAt')).format('YYYY-MM-DD HH:mm:ss');
       },
-      defaultValue: NOW
-    }
+      defaultValue: NOW,
+    },
   }, {
     tableName: 'club_activity_pic',
-    timestamps: false
+    timestamps: false,
   });
   return ClubActivityPic;
-}
+};

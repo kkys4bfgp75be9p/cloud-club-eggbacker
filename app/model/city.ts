@@ -6,21 +6,21 @@
 export default (app) => {
     const {
         STRING,
-        INTEGER
+        INTEGER,
     } = app.Sequelize;
 
     const City = app.model.define('city', {
         id: {
             type: INTEGER,
             autoIncrement: true,
-            primaryKey: true
+            primaryKey: true,
         },
         code: STRING,
         name: STRING,
-        provincecode: STRING
+        provincecode: STRING,
     }, {
-            tableName: "city",
-            timestamps: false
+            tableName: 'city',
+            timestamps: false,
         });
     return City;
-}
+};

@@ -1,7 +1,7 @@
 /**
  * 社团:公告表
  */
-let moment = require('moment');
+const moment = require('moment');
 // import Client from './client';
 // import ClientRole from './client_role';
 
@@ -12,49 +12,49 @@ export default (app) => {
     id: {
       type: CHAR(36),
       allowNull: false,
-      primaryKey: true
+      primaryKey: true,
     },
     club_id: {
       type: CHAR(36),
-      allowNull: false
+      allowNull: false,
     },
     client_id: {
       type: CHAR(36),
-      allowNull: false
+      allowNull: false,
     },
     title: {
       type: STRING(32),
-      allowNull: true
+      allowNull: true,
     },
     content: {
       type: STRING(200),
-      allowNull: true
+      allowNull: true,
     },
     is_sms_inform: {
       type: INTEGER(11),
       allowNull: true,
-      defaultValue: '0'
+      defaultValue: '0',
     },
     struts: {
       type: INTEGER(11),
-      allowNull: true
+      allowNull: true,
     },
     createdAt: {
       type: DATE,
       get createdAt() {
         return moment(ClubNotice.getDataValue('createdAt')).format('YYYY-MM-DD HH:mm:ss');
       },
-      defaultValue: NOW
+      defaultValue: NOW,
     },
     repeal_date: {
       type: DATE,
       get repeal_date() {
         return moment(ClubNotice.getDataValue('repeal_date')).format('YYYY-MM-DD HH:mm:ss');
-      }
-    }
+      },
+    },
   }, {
       tableName: 'club_notice',
-      timestamps: false
+      timestamps: false,
     });
 
   ClubNotice.associate = () => {
@@ -70,4 +70,4 @@ export default (app) => {
 
   // export default  ClubNotice;
   return ClubNotice;
-}
+};

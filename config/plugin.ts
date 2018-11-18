@@ -16,7 +16,22 @@ const plugin: EggPlugin = {
   cors: {
     enable: true,
     package: 'egg-cors',
-  }
+  },
+  // 启用插件 egg-view-assets, 做静态资源模板
+  // assets: {
+  //   enable: true,
+  //   package: 'egg-view-assets',
+  // },
+
+  nunjucks: {
+    enable: true,
+    package: 'egg-view-nunjucks',
+  },
+
+  // view: {
+  //   enable: true,
+  //   package: 'egg-view',
+  // },
 };
 
 export default plugin;

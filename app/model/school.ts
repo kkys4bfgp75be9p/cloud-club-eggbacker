@@ -9,7 +9,7 @@ export default (app) => {
         sid: {
             type: INTEGER,
             autoIncrement: true,
-            primaryKey: true
+            primaryKey: true,
         },
         uName: STRING,
         level: STRING,
@@ -20,10 +20,10 @@ export default (app) => {
         district: STRING,
         province_code: STRING,
         city_code: STRING,
-        district_code: STRING
+        district_code: STRING,
     }, {
-            tableName: "school",
-            timestamps: false
+            tableName: 'school',
+            timestamps: false,
         });
     return School;
-}
+};

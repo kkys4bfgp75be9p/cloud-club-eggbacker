@@ -3,7 +3,7 @@ import { Application } from 'egg';
 export default (app: Application) => {
   const { controller, router } = app;
 
-  router.get('/', controller.home.index);
+  router.get('/index', controller.home.index);
   router.get('/mytest/get', controller.mytest.testGet);
   router.post('/mytest/post', controller.mytest.testPost);
 

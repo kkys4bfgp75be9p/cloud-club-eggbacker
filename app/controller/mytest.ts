@@ -1,5 +1,5 @@
-import BaseController from './common/base';
 import * as DBFormart from '../utils/DBFormart';
+import BaseController from './common/base';
 
 export default class MytestController extends BaseController {
     public async testGet() {
@@ -15,7 +15,7 @@ export default class MytestController extends BaseController {
             order: [['createdAt', 'DESC']],
             limit: pagesize,
             offset,
-            raw: true
+            raw: true,
         });
 
         clientList = DBFormart.handleTimezone(clientList, ['createdAt']);
@@ -33,12 +33,12 @@ export default class MytestController extends BaseController {
         const offset = 0;
         let clientList = await ctx.model.Client.findAll({
             where: {
-                unionid: { $not: 'test' }
+                unionid: { $not: 'test' },
             },
             order: [['createdAt', 'DESC']],
             limit: pagesize,
             offset,
-            raw: true
+            raw: true,
         });
 
         clientList = DBFormart.handleTimezone(clientList, ['createdAt']);

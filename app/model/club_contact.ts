@@ -1,7 +1,7 @@
 /**
  * 社团: 社团联系人(关联)表
  */
-let moment = require('moment');
+const moment = require('moment');
 // import ClientRole from './client_role';
 
 export default (app) => {
@@ -11,42 +11,42 @@ export default (app) => {
     id: {
       type: CHAR(36),
       allowNull: false,
-      primaryKey: true
+      primaryKey: true,
     },
     club_id: {
       type: CHAR(36),
-      allowNull: false
+      allowNull: false,
     },
     client_id: {
       type: CHAR(36),
-      allowNull: false
+      allowNull: false,
     },
     role_ability: {
       type: INTEGER(11),
       allowNull: true,
-      defaultValue: '0'
+      defaultValue: '0',
     },
     struts: {
       type: INTEGER(11),
-      allowNull: true
+      allowNull: true,
     },
     createdAt: {
       type: DATE,
       get createdAt() {
         return moment(ClubContact.getDataValue('createdAt')).format('YYYY-MM-DD HH:mm:ss');
       },
-      defaultValue: NOW
+      defaultValue: NOW,
     },
     updatedAt: {
       type: DATE,
       get updatedAt() {
         return moment(ClubContact.getDataValue('updatedAt')).format('YYYY-MM-DD HH:mm:ss');
       },
-      defaultValue: NOW
-    }
+      defaultValue: NOW,
+    },
   }, {
       tableName: 'club_contact',
-      timestamps: false
+      timestamps: false,
     });
 
   ClubContact.associate = () => {
@@ -57,4 +57,4 @@ export default (app) => {
 
   // export default ClubContact;
   return ClubContact;
-}
+};

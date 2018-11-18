@@ -1,4 +1,4 @@
-import { Controller, Context } from 'egg';
+import { Context, Controller } from 'egg';
 
 export default class BaseController extends Controller {
     constructor(ctx: Context) {

@@ -19,7 +19,7 @@
     "autod": "autod",
     "lint": "tslint --project . -c tslint.json",
     "clean": "ets clean",
-    "test-part1": "node test/part1"
+    "test-part1": "egg-bin test"
   },
   "dependencies": {
     "ali-oss": "^6.0.1",

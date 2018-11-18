@@ -18,6 +18,7 @@ export default () => {
             }
         }
         // console.log(`必须验证【${url}】中的header是否包含xtoken...`);
+        console.log('【请求中的header】: ', ctx.request.header);
         const xtoken = ctx.request.header['x-access-token'];
         if (!xtoken) {
             ctx.logger.error('请求中的 token 不存在! ');

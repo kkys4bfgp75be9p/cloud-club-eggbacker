@@ -52,6 +52,7 @@ export default class SchoolService extends BaseService {
             ];
             // let fields = ['nickname','avatar_url','gender'];
             const result = await this.ctx.model.School.findAll({ where, attributes, raw: true });
+            this.ctx.logger.info('getSchoolListByCity => ', result);
             // 更新方法返回的数组中,存放的是更新影响的行数
             // result = result[0];
             // Message { err: null, list: [ 1 ] }

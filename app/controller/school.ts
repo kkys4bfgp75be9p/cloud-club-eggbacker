@@ -32,8 +32,9 @@ export default class SchoolController extends BaseController {
     public async get_city_list(){
         const { ctx } = this;
         const { citycode } = ctx.query;
-        ctx.body = await ctx.service.school.getSchoolListByCity({ citycode });
-
+        const result = await ctx.service.school.getSchoolListByCity({ citycode });
+        ctx.logger.info('[根据城市code查询所对应的学校列表 get_city_list] : ', result);
+        ctx.body = result;
     }
 
     /**

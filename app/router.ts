@@ -81,7 +81,7 @@ export default (app: Application) => {
   router.get('/activity/attention-list', controller.activity.get_attentionList);
   router.get('/activity/school-list', controller.activity.get_schoolList);
   router.get('/activity/album', controller.activity.get_album);
-  router.post('/activity/addComment', controller.activity.post_addComment);
+  router.post('/activity/add-comment', controller.activity.post_addComment);
 
   // upload 相关
   router.get('/upload/sheu/headpic', controller.upload.get_sheu_headpic);

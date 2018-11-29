@@ -3,15 +3,15 @@ import { app } from 'egg-mock/bootstrap';
 
 describe('test/app/controller/home.test.ts', () => {
   it('should GET /', async () => {
-    const result = await app.httpRequest().get('/school/city/list?citycode=110100', {
-      dataType: 'json'
+    const result = await app.httpRequest().get('/gift/history-list', {
+      dataType: 'json',
     })
-    .set('x-access-token', 'eyJkYXRhIjp7ImlkIjoiMzk1N2UxNjAtZWEzZi0xMWU4LTk1ODYtYzE1YjcxY2I3ZGQ1In0sImV4cCI6MTQ0MCwiY3JlYXRlZCI6MjU3MDczODR9.yreLX2E65t9LeI/3vHZ5voFJEQYqfGIyimkSm/NU5+Y=')
+    .set('x-access-token', 'eyJkYXRhIjp7ImlkIjoiMDgyMDliNTgtY2FhNi0xMWU4LWE4ZDItNTRiZjY0NTgyNjMzIn0sImNyZWF0ZWQiOjI1NzA1NzAxLCJleHAiOjQzMjAwfQ==.6WSn1fqE0CtizCluf/zOJzWyuQq90GBD0d7+V5Go15Y=')
     .expect(200)
-    .then(res => {
-      console.log('city school list 0 ::',  res.body);
+    .then((res) => {
+      console.log('/gift/next-lottery 0 ::',  res.body);
     });
     // assert(result.text === 'hi, egg');
-    console.log('city school list 1 ::',  result);
+    console.log('/gift/next-lottery 1 ::',  result);
   });
 });

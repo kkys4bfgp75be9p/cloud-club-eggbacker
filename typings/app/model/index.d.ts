@@ -7,6 +7,7 @@ import City from '../../../app/model/city';
 import Client from '../../../app/model/client';
 import ClientAttention from '../../../app/model/client_attention';
 import ClientRole from '../../../app/model/client_role';
+import ClientSeason from '../../../app/model/client_season';
 import ClientTorchRecord from '../../../app/model/client_torch_record';
 import Club from '../../../app/model/club';
 import ClubActivity from '../../../app/model/club_activity';
@@ -33,6 +34,7 @@ declare module 'sequelize' {
     Client: ReturnType<typeof Client>;
     ClientAttention: ReturnType<typeof ClientAttention>;
     ClientRole: ReturnType<typeof ClientRole>;
+    ClientSeason: ReturnType<typeof ClientSeason>;
     ClientTorchRecord: ReturnType<typeof ClientTorchRecord>;
     Club: ReturnType<typeof Club>;
     ClubActivity: ReturnType<typeof ClubActivity>;

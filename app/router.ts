@@ -100,4 +100,9 @@ export default (app: Application) => {
   router.get('/upload/wm/seller/:sellerid/bgimg', controller.upload.get_wm_seller_sellerid_bgimg);
   router.get('/upload/wm/seller/:sellerid/goods', controller.upload.get_wm_seller_sellerid_goods);
   router.get('/upload/wm/knight/apply', controller.upload.get_wm_knight_apply);
+
+  // gift 相关
+  router.get('/gift/next-lottery', controller.gift.nextLottery);
+  router.get('/gift/active-info', controller.gift.activeInfo);
+  router.get('/gift/history-list', controller.gift.historyList);
 };

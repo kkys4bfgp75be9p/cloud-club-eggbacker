@@ -7,6 +7,7 @@ import Activity from '../../../app/service/activity';
 import Area from '../../../app/service/area';
 import Club from '../../../app/service/club';
 import Clubmaster from '../../../app/service/clubmaster';
+import Gift from '../../../app/service/gift';
 import School from '../../../app/service/school';
 import Test from '../../../app/service/Test';
 import Torch from '../../../app/service/torch';
@@ -21,6 +22,7 @@ declare module 'egg' {
     area: Area;
     club: Club;
     clubmaster: Clubmaster;
+    gift: Gift;
     school: School;
     test: Test;
     torch: Torch;

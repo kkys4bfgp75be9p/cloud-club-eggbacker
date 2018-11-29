@@ -7,6 +7,7 @@ import Activity from '../../../app/controller/activity';
 import Area from '../../../app/controller/area';
 import Club from '../../../app/controller/club';
 import Clubmaster from '../../../app/controller/clubmaster';
+import Gift from '../../../app/controller/gift';
 import Home from '../../../app/controller/home';
 import Mytest from '../../../app/controller/mytest';
 import School from '../../../app/controller/school';
@@ -23,6 +24,7 @@ declare module 'egg' {
     area: Area;
     club: Club;
     clubmaster: Clubmaster;
+    gift: Gift;
     home: Home;
     mytest: Mytest;
     school: School;

@@ -9,8 +9,12 @@ export default class GiftService extends BaseService {
     /**
      * 获取已激活的赛季最新时间
      * 以创建时间作为最新时间的判定, 以struts状态为 1 作为激活判定
-     * 有数据时返回: { err: null, info: '2018-11-30 10:00:00' }
-     * 无数据时返回: { err: null }
+     * 有数据时返回: {
+        err: null,
+        info: { proximalTime: '2018-12-02 10:00:00', diff: 89914436 } }
+     * 无数据时返回: {
+        err: null,
+        info: { proximalTime: undefined, diff: undefined } }
      * @param {*} param0
      */
     public async getNextLottery() {
@@ -24,14 +28,18 @@ export default class GiftService extends BaseService {
             clientSeason = this.handleTimezone(clientSeason, ['no1_time', 'no2_time', 'no3_time']);
 
             let proximalTime: any;
+            let diff: any;
             if (clientSeason && clientSeason['no1_time'] && clientSeason['no2_time'] && clientSeason['no2_time']){
                 let no1_time = new Date(clientSeason['no1_time']);
                 let no2_time = new Date(clientSeason['no2_time']);
                 let no3_time = new Date(clientSeason['no3_time']);
                 proximalTime = moment(no1_time < no2_time? (no1_time<no3_time?no1_time:no3_time):(no2_time<no3_time?no2_time:no3_time)).format("YYYY-MM-DD HH:mm:ss");
+                
+                const now = (new Date()).getTime();
+                diff = (new Date(proximalTime)).getTime() - now;
             }
             // this.ctx.logger.info('clientSeason: ', proximalTime);
-            return new Message(null, proximalTime);
+            return new Message(null, {proximalTime, diff});
         } catch (e) {
             this.logger.error(e);
             return new Message(ErrorType.UNKNOW_ERROR, e);
@@ -85,6 +93,32 @@ export default class GiftService extends BaseService {
             // let clientSeason = await this.ctx.model.ClientSeason.findOne({ attributes, where, order, raw: true });
             // 因此, 时间需进行手动时区转换
             clientSeason = this.handleTimezone(clientSeason, ['no1_time', 'no2_time', 'no3_time', 'createdAt']);
+            // 为每一个时间点,拼接剩余时间的毫秒数,用于前端做倒计时
+            const now = (new Date()).getTime();
+            if (clientSeason['no1_time']){
+                let no1_time = (new Date(clientSeason['no1_time'])).getTime();
+                clientSeason['no1_time_diff'] = no1_time - now;
+            }
+            if (clientSeason['no2_time']){
+                let no2_time = (new Date(clientSeason['no2_time'])).getTime();
+                clientSeason['no2_time_diff'] = no2_time - now;
+            }
+            if (clientSeason['no3_time']){
+                let no3_time = (new Date(clientSeason['no3_time'])).getTime();
+                clientSeason['no3_time_diff'] = no3_time - now;
+            }
+            // 拼接循环轮播的人员数组
+            if (!Array.isArray(clientSeason)){
+                // 此时如果clientSeason不是一个数组而是一个对象,则查询正确,获取需要轮播的获奖备选名单
+                const sqlLoop = 'CALL proc_torch_loop_list()';
+                let clientLoop = await this.ctx.model.query(sqlLoop,
+                    { type: this.ctx.model.QueryTypes.RAW, raw: true },
+                );
+                if (Array.isArray(clientLoop) && clientLoop.length > 0){
+                    clientSeason['clients'] = clientLoop;
+                }
+            }
+
             return new Message(null, clientSeason);
         } catch (e) {
             this.logger.error(e);

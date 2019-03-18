@@ -8,6 +8,12 @@ import * as ClubConf from '../utils/configs/club-conf';
 import Message, { ErrorType } from '../utils/message';
 import Token from '../utils/token';
 
+// 用于缓存活动业务数据
+// let memoryCache = {};
+
+/**
+ * 活动相关的业务逻辑模型
+ */
 export default class ActivityService extends BaseService {
     /**
      * 获取社团活动的简单信息(展示页面)
@@ -35,34 +41,6 @@ export default class ActivityService extends BaseService {
         }
     }
 
-    /**
-     * 获取我 `自己参与的` 社团活动的列表信息
-     * timing: 活动时机, 默认为0(一切活动),可选参数有[1:即将开始, 2:进行中, 3: 已结束, 4: 活动总结]
-     * club_id: 社团id, 空字符串为所有社团
-     * pagenum: 页码
-     */
-    // public async getConcernedList({timing=0, club_id='', pagenum=1, token}) {
-    //     let loginToken = new Token();
-    //     try{
-    //         // 获取我当前的用户ID
-    //         const club_type = ClubConf.ACTIVITY_CLUB_TYPE_SELF;
-    //         let client_id = loginToken.checkToken(token).data.id;
-    //         let activityList = await this.ctx.model.query(
-    //             'CALL proc_query_activity_full_list(?,?,?,?,?,?)',
-    //             { replacements: ['', club_type, club_id, client_id, 0, pagenum],
-    //                 type: this.ctx.model.QueryTypes.RAW, raw: true }
-    //         );
-    //         // 因此, 时间需进行手动时区转换
-    //         activityList = this.handleTimezone(activityList, ['createdAt','brief_start','brief_end']);
-    //         // 搜索相关图片?
-    //         await loadActivityPic(activityList);
-
-    //         return new Message(null, activityList);
-    //     }catch(e){
-    //         this.logger.error(e);
-    //         return new Message(ErrorType.UNKNOW_ERROR, e);
-    //     }
-    // }
     /**
      * 组装 我参与的社团信息
      * @param {*} param0

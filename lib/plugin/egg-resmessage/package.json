@@ -1,0 +1,14 @@
+{
+  "name": "egg-resmessage",
+  "version": "1.0.0",
+  "description": "Message for webservice response.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alalabu",
+  "license": "ISC",
+  "eggPlugin": {
+    "name": "resmessage"
+  }
+}

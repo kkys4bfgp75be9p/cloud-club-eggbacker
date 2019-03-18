@@ -1,24 +1,25 @@
 /**
  * 用于处理axtoken的中间件
  */
+import { Context } from 'egg';
 import Message, { ErrorType } from '../utils/message';
 import Token from '../utils/token';
 
-const excludePath = ['/access/login', '/index'];
+// const excludePath = ['/access/login', '/index'];
 
 export default () => {
-    return async (ctx, next) => {
-        // console.log('cors middleware...', ctx);
+    return async (ctx: Context, next: Function) => {
+        console.log('【middleware】 xtoken...');
         // 排除登录路径, 其他路径一律需
-        const { url } = ctx.request;
-        for (const epath of excludePath) {
-            if (url === epath) {
-                // console.log(`路径【${url}】是排除列表的内容，不验证token。。`);
-                return await next();
-            }
-        }
+        // const { url } = ctx.request;
+        // for (const epath of excludePath) {
+        //     if (url === epath) {
+        //         // console.log(`路径【${url}】是排除列表的内容，不验证token。。`);
+        //         return await next();
+        //     }
+        // }
         // console.log(`必须验证【${url}】中的header是否包含xtoken...`);
-        console.log('【请求中的header】: ', ctx.request.header);
+        // console.log('【请求中的header】: ', ctx.request.header);
         const xtoken = ctx.request.header['x-access-token'];
         if (!xtoken) {
             ctx.logger.error('请求中的 token 不存在! ');

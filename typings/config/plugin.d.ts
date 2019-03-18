@@ -4,4 +4,3 @@
 import 'egg'; // Make sure ts to import egg declaration at first
 import 'egg-sequelize';
 import 'egg-cors';
-import 'egg-view-nunjucks';

@@ -1,7 +1,7 @@
 // import * as assert from 'assert';
 import { Context } from 'egg';
 import { app } from 'egg-mock/bootstrap';
-import util = require('util');
+// import util = require('util');
 
 describe('test/app/service/Test.test.js', () => {
   let ctx: Context;
@@ -11,8 +11,8 @@ describe('test/app/service/Test.test.js', () => {
   });
 
   it('sayHi', async () => {
-    const result = await ctx.service.gift.getNextLottery();
-    console.log('getActiveInfo ::',  util.inspect( result, true, 3));
-    // assert(result === 'hi, egg');
+    const result = await ctx.service.area.getCityList({provincecode: '610000'});
+    console.log('getActiveInfo ::',  result);
+
   });
 });

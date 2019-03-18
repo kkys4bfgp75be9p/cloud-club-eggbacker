@@ -1,11 +1,7 @@
 import { EggPlugin } from 'egg';
+// const path = require('path');
 
 const plugin: EggPlugin = {
-  // static: true,
-  // nunjucks: {
-  //   enable: true,
-  //   package: 'egg-view-nunjucks',
-  // },
 
   // 启用插件: sequelize
   sequelize: {
@@ -17,16 +13,28 @@ const plugin: EggPlugin = {
     enable: true,
     package: 'egg-cors',
   },
+
+  // resmessage: {
+  //   enable: true,
+  //   path: path.join(__dirname, '../lib/plugin/egg-resmessage'),
+  // },
+  
   // 启用插件 egg-view-assets, 做静态资源模板
   // assets: {
   //   enable: true,
   //   package: 'egg-view-assets',
   // },
 
-  nunjucks: {
-    enable: true,
-    package: 'egg-view-nunjucks',
-  },
+  // static: true,
+  // nunjucks: {
+  //   enable: true,
+  //   package: 'egg-view-nunjucks',
+  // },
+
+  // nunjucks: {
+  //   enable: true,
+  //   package: 'egg-view-nunjucks',
+  // },
 
   // view: {
   //   enable: true,

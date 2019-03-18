@@ -26,6 +26,7 @@ import ClubNotice from '../../../app/model/club_notice';
 import District from '../../../app/model/district';
 import Province from '../../../app/model/province';
 import School from '../../../app/model/school';
+import CommonBase from '../../../app/model/common/base';
 
 declare module 'sequelize' {
   interface Sequelize {
@@ -53,5 +54,8 @@ declare module 'sequelize' {
     District: ReturnType<typeof District>;
     Province: ReturnType<typeof Province>;
     School: ReturnType<typeof School>;
+    Common: {
+      Base: ReturnType<typeof CommonBase>;
+    };
   }
 }

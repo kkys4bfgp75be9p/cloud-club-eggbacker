@@ -4,6 +4,7 @@ export default (app: Application) => {
   const { controller, router } = app;
 
   router.get('/index', controller.home.index);
+  router.get('/index/test1', controller.home.test1);
   router.get('/mytest/get', controller.mytest.testGet);
   router.post('/mytest/post', controller.mytest.testPost);
 

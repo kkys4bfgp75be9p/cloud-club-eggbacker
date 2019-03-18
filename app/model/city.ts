@@ -19,8 +19,8 @@ export default (app) => {
         name: STRING,
         provincecode: STRING,
     }, {
-            tableName: 'city',
-            timestamps: false,
-        });
+        tableName: 'city',
+        timestamps: false,
+    });
     return City;
 };

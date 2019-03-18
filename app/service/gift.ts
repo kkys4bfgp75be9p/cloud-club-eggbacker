@@ -90,6 +90,7 @@ export default class GiftService extends BaseService {
             if (Array.isArray(clientSeason) && clientSeason.length > 0){
                 clientSeason = clientSeason[0];
             }
+            console.log('clientSeason ====> ', clientSeason);
             // let clientSeason = await this.ctx.model.ClientSeason.findOne({ attributes, where, order, raw: true });
             // 因此, 时间需进行手动时区转换
             clientSeason = this.handleTimezone(clientSeason, ['no1_time', 'no2_time', 'no3_time', 'createdAt']);

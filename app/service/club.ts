@@ -416,4 +416,16 @@ export default class ClubService extends BaseService {
             return new Message(ErrorType.UNKNOW_ERROR, e);
         }
     }
+
+    // public checkUpdate4Recommend(){
+        
+    // }
+
+    // public async updateRecommend(){
+    //     try {
+
+    //     } catch (error) {
+            
+    //     }
+    // }
 }

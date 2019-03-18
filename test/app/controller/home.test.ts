@@ -3,7 +3,7 @@
 
 // describe('test/app/controller/home.test.ts', () => {
 //   it('should GET /', async () => {
-//     const result = await app.httpRequest().get('/gift/history-list', {
+//     const result = await app.httpRequest().get('/gift/active-info', {
 //       dataType: 'json',
 //     })
 //     .set('x-access-token', 'eyJkYXRhIjp7ImlkIjoiMDgyMDliNTgtY2FhNi0xMWU4LWE4ZDItNTRiZjY0NTgyNjMzIn0sImNyZWF0ZWQiOjI1NzA1NzAxLCJleHAiOjQzMjAwfQ==.6WSn1fqE0CtizCluf/zOJzWyuQq90GBD0d7+V5Go15Y=')

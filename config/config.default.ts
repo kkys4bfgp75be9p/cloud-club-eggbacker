@@ -3,13 +3,23 @@ import { EggAppConfig, EggAppInfo, PowerPartial } from 'egg';
 
 export default (appInfo: EggAppInfo) => {
   const config = {} as PowerPartial<EggAppConfig>;
+  console.log('【ENV】========> default');
 
   // override config from framework / plugin
   // use for cookie sign key, should change to your own and keep security
   config.keys = appInfo.name + '_20181105';
 
   // add your egg config in here
-  config.middleware = ['xtoken', 'csrfauth'];
+  config.middleware = ['xtoken', 'csrfauth', 'mwtest1'];
+
+  config.xtoken = {
+    ignore: ['/index', '/access/login'],
+  };
+
+  // config.resmessage = {
+  //   f1: 'f1_value',
+  //   f2: 'f2_value'
+  // };
 
   // add your special config in here
   const bizConfig = {
@@ -73,13 +83,13 @@ export default (appInfo: EggAppInfo) => {
   /**
    * 配置 视图引擎
    */
-  config.view = {
-    // root: path.join(appInfo.baseDir, 'app/assets'),
-    defaultViewEngine: 'nunjucks',
-    mapping: {
-        '.tpl': 'nunjucks',
-    },
-  };
+  // config.view = {
+  //   // root: path.join(appInfo.baseDir, 'app/assets'),
+  //   defaultViewEngine: 'nunjucks',
+  //   mapping: {
+  //       '.tpl': 'nunjucks',
+  //   },
+  // };
 
   // config.assets = {
   //   templatePath: path.join(appInfo.baseDir, 'app/view/template.html'),
